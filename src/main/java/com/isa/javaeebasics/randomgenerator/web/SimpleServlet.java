@@ -1,7 +1,8 @@
 package com.isa.javaeebasics.randomgenerator.web;
 
-import com.isa.javaeebasics.randomgenerator.NumbersGenerator;
+import com.isa.javaeebasics.randomgenerator.ejb.LocalNumbersGenerator;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +14,11 @@ import java.io.PrintWriter;
 @WebServlet("/generator")
 public class SimpleServlet extends HttpServlet{
 
+    @EJB
+    private LocalNumbersGenerator numbers;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NumbersGenerator numbers = new NumbersGenerator();
 
         resp.setContentType("text/html;charset=UTF-8");
 
