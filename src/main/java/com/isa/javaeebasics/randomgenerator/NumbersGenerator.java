@@ -2,6 +2,7 @@ package com.isa.javaeebasics.randomgenerator;
 
 import com.isa.javaeebasics.randomgenerator.ejb.LocalNumbersGenerator;
 import com.isa.javaeebasics.randomgenerator.ejb.RemoteNumbersGenerator;
+import com.isa.javaeebasics.randomgenerator.interceptors.ParametersLoggingInterceptor;
 import com.isa.javaeebasics.randomgenerator.interceptors.TimeLoggingInterceptor;
 
 import javax.ejb.Stateless;
@@ -13,7 +14,7 @@ public class NumbersGenerator implements LocalNumbersGenerator, RemoteNumbersGen
 
     Random random = new Random();
 
-    @Interceptors(TimeLoggingInterceptor.class)
+    @Interceptors({TimeLoggingInterceptor.class, ParametersLoggingInterceptor.class})
     @Override
     public int getRandomInt(int upperBound) {
         return random.nextInt(upperBound);
