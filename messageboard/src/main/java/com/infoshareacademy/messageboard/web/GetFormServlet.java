@@ -16,6 +16,12 @@ public class GetFormServlet extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
 
-        writer.print("Selected name: " + name);
+        writer.println("Selected name: " + name);
+
+        String fruit = req.getParameter("fruit");
+        writer.println("Selected fruit: " + fruit);
+
+        String whatever = req.getParameter("whatever");
+        writer.println("Is checkbox selected? " + (whatever != null));
     }
 }
